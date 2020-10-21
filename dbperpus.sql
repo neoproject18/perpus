@@ -1,6 +1,6 @@
 /*
-SQLyog Professional v12.5.1 (64 bit)
-MySQL - 10.1.38-MariaDB : Database - perpus
+SQLyog Professional
+MySQL - 10.4.11-MariaDB : Database - dbperpus
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 10.1.38-MariaDB : Database - perpus
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`perpus` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`dbperpus` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
 USE `dbperpus`;
 
@@ -27,7 +27,7 @@ CREATE TABLE `tbl_buku` (
   `penerbit` varchar(30) NOT NULL,
   `penulis` varchar(30) NOT NULL,
   `id_kategori` int(3) NOT NULL,
-  `isdeleted` tinyint(1) NOT NULL DEFAULT '0',
+  `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_buku`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `tbl_kategori`;
 CREATE TABLE `tbl_kategori` (
   `id_kategori` int(3) NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(30) NOT NULL,
-  `isdeleted` tinyint(1) NOT NULL DEFAULT '0',
+  `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_kategori`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -56,7 +56,7 @@ CREATE TABLE `tbl_member` (
   `alamat` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `no_telp` varchar(15) NOT NULL,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_member`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -102,13 +102,18 @@ DROP TABLE IF EXISTS `tbl_user`;
 CREATE TABLE `tbl_user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `nama_user` varchar(50) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `id_role` int(3) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `isdeleted` tinyint(1) NOT NULL DEFAULT '0',
+  `password` varchar(255) NOT NULL,
+  `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_user` */
+
+insert  into `tbl_user`(`id_user`,`nama_user`,`username`,`id_role`,`password`,`isdeleted`) values 
+(1,'Manager','manager',1,'b456f30873e3fbbe70dbb2e6775843d90eb5a8fb471b1b42698de889783a4d10b95f1f8114e31f970d9b71439e5ff0d281a131f0a4d061e7a81b4c69f279325f',0),
+(2,'Pustakawan','pustakawan',2,'b456f30873e3fbbe70dbb2e6775843d90eb5a8fb471b1b42698de889783a4d10b95f1f8114e31f970d9b71439e5ff0d281a131f0a4d061e7a81b4c69f279325f',0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
