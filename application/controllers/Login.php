@@ -5,14 +5,14 @@ class Login extends CI_Controller
 	private $encryption_key = '0123456789';
 	public function __construct()
 	{
-		parent::__construct();		
+		parent::__construct();
 	}
 
 	public function index()
 	{
 		if($this->session->userdata('login_perpus'))
 		{
-			echo "Halaman Beranda";
+			redirect('beranda');
 		}
 		else
 		{
