@@ -1,16 +1,18 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller 
+class Login extends MY_Controller 
 {
 	private $encryption_key = '0123456789';
+	private $userlogin;
 	public function __construct()
 	{
 		parent::__construct();
+		$this->userlogin = $this->getUserData();
 	}
 
 	public function index()
 	{
-		if($this->session->userdata('login_perpus'))
+		if($this->userlogin	)
 		{
 			redirect('beranda');
 		}
