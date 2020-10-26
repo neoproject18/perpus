@@ -12,7 +12,7 @@ class Login extends MY_Controller
 
 	public function index()
 	{
-		if($this->userlogin)
+		if($this->session->userdata('login_perpus'))
 		{
 			redirect('beranda');
 		}

@@ -7,7 +7,7 @@ class Beranda extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->cekLogin();
+		// $this->cekLogin();
 		$this->userlogin = $this->getUserData();
 	}
 
