@@ -7,7 +7,7 @@ class Beranda extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		// $this->cekLogin();
+		$this->cekLogin();
 		$this->userlogin = $this->getUserData();
 	}
 
@@ -17,3 +17,5 @@ class Beranda extends MY_Controller
 		$this->template->load('template/v_layout','v_beranda', $data);
 	}
 }
+
+
