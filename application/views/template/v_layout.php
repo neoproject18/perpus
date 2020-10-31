@@ -16,6 +16,8 @@
   <!-- DataTable -->
   <link href="<?= base_url('assets/') ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- Sweetalert Css -->
+  <link href="<?= base_url('assets/') ?>plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -77,12 +79,16 @@
 <script src="<?= base_url('assets/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="<?= base_url('assets/') ?>js/ruang-admin.min.js"></script>
 <!-- Datatable -->
-  <script src="<?= base_url('assets/') ?>vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="<?= base_url('assets/') ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url('assets/') ?>vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('assets/') ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script>
-    $(document).ready(function () {
+<!-- SweetAlert Plugin Js -->
+<script src="<?= base_url('assets/') ?>plugins/sweetalert/sweetalert.min.js"></script>
+<script src="<?= base_url('assets/') ?>plugins/sweetalert/sweetshow.js"></script>
+
+<!-- Page level custom scripts -->
+<script>
+  $(document).ready(function () {
       $('#dataTable').DataTable(); // ID From dataTable 
       $('#dataTable2').DataTable(); // ID From dataTable 
       $('#dataTableHover').DataTable(); // ID From dataTable with Hover

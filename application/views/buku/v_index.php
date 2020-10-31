@@ -45,7 +45,7 @@
                     </button>
                     <div class="dropdown-menu">
                       <a type="button" href="<?= base_url('buku/edit/' . $value->id_buku) ?>" class="dropdown-item"><span class="fas fa-edit"></span> Edit</a>
-                      <a type="button" href="<?= base_url('buku/delete/' . $value->id_buku) ?>"  class="dropdown-item"><span class="fas fa-trash"></span> Hapus</a>
+                      <button type="button" onclick="delete_buku('<?= $value->id_buku ?>','<?= $value->judul_buku ?>')" class="dropdown-item"><span class="fas fa-trash"></span> Hapus</button>
                     </div>
                   </div>
                 </td>
@@ -58,3 +58,31 @@
   </div>
 </div>
 </div>
+
+<script type="text/javascript">
+  function delete_buku(id_buku, judul_buku){
+    swal({
+      title: "Konfirmasi",
+      text: "Ingin menghapus buku: " + judul_buku + "?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((submit) => {
+      if (submit) {
+        $.ajax({
+          url:"<?= base_url('buku/delete/') ?>" + id_buku,
+          type:"DELETE",
+          success:function(result){
+            var hasil = JSON.parse(result);
+            swal_show(hasil);
+
+            if(hasil['status_code'] == 200)
+              setTimeout("window.open(self.location, '_self');", 1500);
+          },
+        });
+      }
+      else info.revert();
+    });
+  }
+</script>

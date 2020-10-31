@@ -35,7 +35,20 @@ class Buku extends MY_Controller
 		$in_data['id_kategori'] = $this->db->escape_str($this->input->post('id_kategori'));
 		
 		if($this->m_buku->insert($in_data))
-			redirect('buku', 'refresh');
+		{
+			$output['status_code'] = 200;
+			$output['title'] = "Berhasil";
+			$output['type'] = "success";
+			$output['message'] = "Berhasil menambahkan buku.";
+		}
+		else
+		{
+			$output['status_code'] = 400;
+			$output['title'] = "Gagal";
+			$output['type'] = "error";
+			$output['message'] = "Gagal menambahkan buku.";
+		}
+		echo json_encode($output);
 
 	}
 
@@ -57,7 +70,20 @@ class Buku extends MY_Controller
 		$in_data['id_kategori'] = $this->db->escape_str($this->input->post('id_kategori'));
 		
 		if($this->m_buku->update($in_data, $id_data))
-			redirect('buku', 'refresh');
+		{
+			$output['status_code'] = 200;
+			$output['title'] = "Berhasil";
+			$output['type'] = "success";
+			$output['message'] = "Berhasil mengubah buku.";
+		}
+		else
+		{
+			$output['status_code'] = 400;
+			$output['title'] = "Gagal";
+			$output['type'] = "error";
+			$output['message'] = "Gagal mengubah buku.";
+		}
+		echo json_encode($output);
 	}
 
 	// Hapus tapi tidak menghilangkan data dari database || Menggunakan query update
@@ -67,7 +93,20 @@ class Buku extends MY_Controller
 		$in_data['isdeleted'] = 1;
 
 		if($this->m_buku->update($in_data, $id_data))
-			redirect('buku', 'refresh');
+		{
+			$output['status_code'] = 200;
+			$output['title'] = "Berhasil";
+			$output['type'] = "success";
+			$output['message'] = "Berhasil menghapus buku.";
+		}
+		else
+		{
+			$output['status_code'] = 400;
+			$output['title'] = "Gagal";
+			$output['type'] = "error";
+			$output['message'] = "Gagal menghapus buku.";
+		}
+		echo json_encode($output);
 	}
 
 	public function delete_from_db($idbuku)

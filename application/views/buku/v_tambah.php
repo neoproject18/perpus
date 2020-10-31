@@ -14,35 +14,35 @@
           <h6 class="m-0 font-weight-bold text-primary">Tambah Buku</h6>
         </div>
         <div class="card-body">
-          <form action="<?= base_url('buku/simpan') ?>" method="post">
+          <form onsubmit="submit_buku(); return false;">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Judu Buku</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Judul Buku" name="judul">
+                <input type="text" class="form-control" placeholder="Judul Buku" id="judul">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Penulis</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Penulis" name="penulis">
+                <input type="text" class="form-control" placeholder="Penulis" id="penulis">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Penerbit</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Penerbit" name="penerbit">
+                <input type="text" class="form-control" placeholder="Penerbit" id="penerbit">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Tahun Terbit</label>
               <div class="col-sm-2">
-                <input type="number" class="form-control" placeholder="Tahun Terbit" value="<?= date('Y') ?>"name="tahun">
+                <input type="number" class="form-control" placeholder="Tahun Terbit" value="<?= date('Y') ?>" id="tahun">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Kategori</label>
               <div class="col-sm-9">
-                <select type="text" class="form-control" placeholder="Kategori" name="id_kategori">
+                <select type="text" class="form-control" placeholder="Kategori" id="id_kategori">
                   <option value="">Pilih Kategori</option>
                   <?php foreach($list_kategori as $value): ?>
                     <option value="<?= $value->id_kategori ?>"><?= $value->nama_kategori ?></option>
@@ -50,7 +50,6 @@
                 </select>
               </div>
             </div>
-            
             <div class="form-group row">
               <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i> Simpan</button>
@@ -63,3 +62,36 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  function submit_buku(){
+    var judul = $('#judul').val();
+    var penulis = $('#penulis').val();
+    var penerbit = $('#penerbit').val();
+    var tahun = $('#tahun').val();
+    var id_kategori = $('#id_kategori').val();
+
+    if(judul.length > 0 && penulis.length > 0 && penerbit.length > 0 && tahun.length > 0 && id_kategori.length > 0) 
+    {
+      $.ajax({
+        url : "<?= base_url('buku/simpan') ?>",
+        type : "POST",
+        data:{
+          judul: judul,
+          penulis: penulis,
+          penerbit: penerbit,
+          tahun: tahun,
+          id_kategori: id_kategori,
+        },
+        success:function(result)
+        {
+          var hasil = JSON.parse(result);
+          swal_show(hasil);
+
+          if(hasil['status_code'] == 200)
+            setTimeout("window.history.back()", 1500);
+        },
+      });
+    }
+  }
+</script>
