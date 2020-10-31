@@ -16,7 +16,7 @@
         <div class="card-body">
           <form onsubmit="submit_buku(); return false;">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Judu Buku</label>
+              <label class="col-sm-3 col-form-label">Judul Buku</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" placeholder="Judul Buku" id="judul" value="<?= $data_buku->judul_buku ?>">
               </div>

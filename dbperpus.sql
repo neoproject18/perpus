@@ -51,13 +51,14 @@ CREATE TABLE `tbl_kategori` (
   `nama_kategori` varchar(30) NOT NULL,
   `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_kategori`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_kategori` */
 
 insert  into `tbl_kategori`(`id_kategori`,`nama_kategori`,`isdeleted`) values 
 (1,'Buku Pelajaran',0),
-(2,'Novel',0);
+(2,'Novel',0),
+(3,'Komik',0);
 
 /*Table structure for table `tbl_member` */
 

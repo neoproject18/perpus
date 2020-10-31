@@ -20,7 +20,7 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="<?= base_url('kategori') ?>">
       <i class="fas fa-fw fa-bookmark"></i>
       <span>Data Kategori</span>
     </a>
