@@ -30,7 +30,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Login</h1>
                   </div>
-                  <!-- <form class="user" action="<?= base_url('index.php/login/dologin') ?>" method='post'> -->
+                  <!-- <form class="user" action="<?= base_url('login/dologin') ?>" method='post'> -->
 
                     <form onsubmit="ajax_login(); return false;">
                       <div class="form-group">
@@ -81,7 +81,7 @@
 
         if(username.length > 0 && password.length > 0) {
           $.ajax({
-            url : "<?= base_url('index.php/login/dologin') ?>",
+            url : "<?= base_url('login/dologin') ?>",
             type : "POST",
             data:{
               username: username,

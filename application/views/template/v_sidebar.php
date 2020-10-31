@@ -7,14 +7,14 @@
   </a>
   <hr class="sidebar-divider my-0">
   <li class="nav-item">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="<?= base_url('') ?>">
       <i class="fas fa-fw fa-home"></i><span>Beranda</span>
     </a>
   </li>
   <hr class="sidebar-divider">
   <div class="sidebar-heading">DATA MASTER</div>
   <li class="nav-item">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="<?= base_url('buku') ?>">
       <i class="fas fa-fw fa-book"></i>
       <span>Data Buku</span>
     </a>
