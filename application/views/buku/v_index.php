@@ -13,7 +13,9 @@
       <div class="card mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">List Buku</h6>
-          <a href="<?= base_url('buku/tambah') ?>" class="m-0 float-right btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i> Tambah</a>
+          <a href="<?= base_url('buku/tambah') ?>" class="m-0 float-right btn btn-primary btn-sm">
+            <i class="fa fa-plus-circle"></i> Tambah
+          </a>
         </div>
         <div class="table-responsive p-3">
           <table class="table align-items-center table-flush" id="dataTable">
@@ -28,30 +30,31 @@
                 <th>AKSI</th>
               </tr>
             </thead>
-            <?php $no=1; foreach($listdata as $value): ?>
-            <tr>
-              <td><?= $no++ ?></td>
-              <td><?= $value->judul_buku ?></td>
-              <td><?= $value->tahun_terbit ?></td>
-              <td><?= $value->penerbit ?></td>
-              <td><?= $value->penulis ?></td>
-              <td><?= $value->nama_kategori ?></td>
-              <td>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-cogs"></span>
-                  </button>
-                  <div class="dropdown-menu">
-                    <a type="button" href="<?= base_url('buku/edit/' . $value->id_buku) ?>" class="dropdown-item"><span class="fas fa-edit"></span> Edit</a>
-                    <a type="button" href="<?= base_url('buku/delete/' . $value->id_buku) ?>"  class="dropdown-item"><span class="fas fa-trash"></span> Hapus</a>
+            <tbody>
+              <?php $no=1; foreach($listdata as $value): ?>
+              <tr>
+                <td><?= $no++ ?></td>
+                <td><?= $value->judul_buku ?></td>
+                <td><?= $value->tahun_terbit ?></td>
+                <td><?= $value->penerbit ?></td>
+                <td><?= $value->penulis ?></td>
+                <td><?= $value->nama_kategori ?></td>
+                <td>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-cogs"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                      <a type="button" href="<?= base_url('buku/edit/' . $value->id_buku) ?>" class="dropdown-item"><span class="fas fa-edit"></span> Edit</a>
+                      <a type="button" href="<?= base_url('buku/delete/' . $value->id_buku) ?>"  class="dropdown-item"><span class="fas fa-trash"></span> Hapus</a>
+                    </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 </div>
 </div>

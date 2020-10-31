@@ -14,6 +14,8 @@ class M_buku extends CI_Model
 	public function listbuku_byid($idbuku)
 	{
 		return $this->db->get_where($this->_tbl_buku, ['id_buku' => $idbuku])->row();
+
+		// return $this->db->query("SELECT * FROM tbl_buku WHERE id_buku = '$idbuku'")->row();
 	}
 
 	public function insert($data)
