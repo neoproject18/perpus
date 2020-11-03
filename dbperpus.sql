@@ -29,18 +29,19 @@ CREATE TABLE `tbl_buku` (
   `id_kategori` int(3) NOT NULL,
   `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_buku`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_buku` */
 
 insert  into `tbl_buku`(`id_buku`,`judul_buku`,`tahun_terbit`,`penerbit`,`penulis`,`id_kategori`,`isdeleted`) values 
 (1,'Pintar Matematika',2015,'Erlangga','Jarno',1,0),
 (2,'Hidup Sehat',2020,'Erlangga','Jino',1,0),
-(3,'',0,'','',0,0),
+(3,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,1),
 (4,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,1),
-(5,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,1),
-(6,'Kisah 1004',2020,'Bentang Pustaka','Andrea Hirata',2,1),
-(7,'Ayah',2015,'Bentang Pustaka','Andrea Hirata',2,0);
+(5,'Kisah 1004',2020,'Bentang Pustaka','Andrea Hirata',2,1),
+(6,'Ayah',2015,'Bentang Pustaka','Andrea Hirata',2,0),
+(7,'Habis Gelap Terbitlah Terang',1997,'Gramedia','Anom',1,0),
+(8,'Peraih Mimpi',2000,'Bentang Pustaka','Tere Liye',2,0);
 
 /*Table structure for table `tbl_kategori` */
 
