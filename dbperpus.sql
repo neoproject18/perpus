@@ -80,6 +80,10 @@ CREATE TABLE `tbl_member` (
 
 /*Data for the table `tbl_member` */
 
+insert  into `tbl_member`(`id_member`,`nama_member`,`alamat`,`email`,`no_telp`,`created`) values 
+('M-2010001','Dharma','Jrakah 02/04','dharma.bekti16696@gmail.com','2129019201','2020-11-15 19:57:39'),
+('M-2010002','Anom','Janti','dharma.bekti166@gmail.com','21291029','2020-11-15 20:08:01');
+
 /*Table structure for table `tbl_peminjaman` */
 
 DROP TABLE IF EXISTS `tbl_peminjaman`;
