@@ -37,14 +37,6 @@ class M_user extends CI_Model
 			return true;
 		return false;
 	}
-
-	public function delete($iduser)
-	{
-		$this->db->where('id_user',$iduser);
-		if($this->db->delete($this->_tbl_user))
-			return true;
-		return false;
-	}
 }
 
 
