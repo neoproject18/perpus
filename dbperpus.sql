@@ -29,19 +29,22 @@ CREATE TABLE `tbl_buku` (
   `id_kategori` int(3) NOT NULL,
   `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_buku`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_buku` */
 
 insert  into `tbl_buku`(`id_buku`,`judul_buku`,`tahun_terbit`,`penerbit`,`penulis`,`id_kategori`,`isdeleted`) values 
 (1,'Pintar Matematika',2015,'Erlangga','Jarno',1,0),
-(2,'Hidup Sehat',2020,'Erlangga','Jino',1,0),
+(2,'Hidup Sehat Sejati',2020,'Erlangga','Jino',1,1),
 (3,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,1),
 (4,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,1),
 (5,'Kisah 1004',2020,'Bentang Pustaka','Andrea Hirata',2,1),
-(6,'Ayah',2015,'Bentang Pustaka','Andrea Hirata',2,0),
+(6,'Ayah',2015,'Bentang Pustaka','Andrea Hirata',2,1),
 (7,'Habis Gelap Terbitlah Terang',1997,'Gramedia','Anom',1,0),
-(8,'Peraih Mimpi',2000,'Bentang Pustaka','Tere Liye',2,0);
+(8,'Peraih Mimpi',2000,'Bentang Pustaka','Tere Liye',2,1),
+(9,'Ayat Cinta',2000,'Gramedia','Arman',2,0),
+(10,'Buku Matematika',2020,'Erlangga','Arya',1,0),
+(12,'Hidup Sehat',2020,'Bentang Pustaka','Anom',1,1);
 
 /*Table structure for table `tbl_kategori` */
 
@@ -122,13 +125,14 @@ CREATE TABLE `tbl_user` (
   `password` varchar(255) NOT NULL,
   `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_user` */
 
 insert  into `tbl_user`(`id_user`,`nama_user`,`username`,`id_role`,`password`,`isdeleted`) values 
 (1,'Manager','manager',1,'b456f30873e3fbbe70dbb2e6775843d90eb5a8fb471b1b42698de889783a4d10b95f1f8114e31f970d9b71439e5ff0d281a131f0a4d061e7a81b4c69f279325f',0),
-(2,'Pustakawan','pustakawan',2,'b456f30873e3fbbe70dbb2e6775843d90eb5a8fb471b1b42698de889783a4d10b95f1f8114e31f970d9b71439e5ff0d281a131f0a4d061e7a81b4c69f279325f',0);
+(2,'Pustakawan','pustakawan',2,'b456f30873e3fbbe70dbb2e6775843d90eb5a8fb471b1b42698de889783a4d10b95f1f8114e31f970d9b71439e5ff0d281a131f0a4d061e7a81b4c69f279325f',0),
+(3,'Bekti','bekti',1,'b456f30873e3fbbe70dbb2e6775843d90eb5a8fb471b1b42698de889783a4d10b95f1f8114e31f970d9b71439e5ff0d281a131f0a4d061e7a81b4c69f279325f',0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

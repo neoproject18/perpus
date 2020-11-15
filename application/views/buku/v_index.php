@@ -22,7 +22,7 @@
             <thead class="thead-light">
               <tr>
                 <th>NO</th>
-                <th>JUDUl</th>
+                <th>JUDUL</th>
                 <th>TAHUN TERBIT</th>
                 <th>PENERBIT</th>
                 <th>PENULIS</th>
