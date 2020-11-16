@@ -90,7 +90,7 @@
     var user_name = $('#username').val();
     var idrole = $('#id_role').val();
 
-    if(nama.length > 0 || user_name.length > 0 || idrole.length > 0)
+    if(nama.length > 0 && user_name.length > 0 && idrole.length > 0)
     {
       $.ajax({
         url : "<?= base_url('user/save') ?>",
@@ -119,7 +119,7 @@
     var user_name = $('#username_ubah').val();
     var idrole = $('#id_role_ubah').val();
 
-    if(nama.length > 0 || user_name.length > 0 || idrole.length > 0)
+    if(nama.length > 0 && user_name.length > 0 && idrole.length > 0)
     {
       $.ajax({
         url : "<?= base_url('user/update') ?>",
