@@ -24,6 +24,11 @@ class M_user extends CI_Model
 			WHERE u.isdeleted = 0")->result();
 	}
 
+	public function getUser_byId($iduser)
+	{
+		return $this->db->get_where($this->_tbl_user, ['id_user' => $iduser])->row();
+	}
+
 	public function insert($data)
 	{
 		if($this->db->insert($this->_tbl_user, $data))

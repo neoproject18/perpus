@@ -42,7 +42,7 @@
   <hr class="sidebar-divider">
   <div class="sidebar-heading">PEMINJAMAN</div>
   <li class="nav-item">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="<?= base_url('peminjaman') ?>">
       <i class="fas fa-fw fa-folder-open"></i>
       <span>Peminjaman Buku</span>
     </a>
