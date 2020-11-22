@@ -101,6 +101,9 @@ CREATE TABLE `tbl_peminjaman` (
 
 /*Data for the table `tbl_peminjaman` */
 
+insert  into `tbl_peminjaman`(`id_peminjaman`,`id_member`,`id_user`,`id_buku`,`tgl_pinjam`,`tgl_kembali`,`status_pinjam`) values 
+('P-1606061261','M-2010002',1,7,'2020-11-22 17:07:41',NULL,'Pinjam');
+
 /*Table structure for table `tbl_role` */
 
 DROP TABLE IF EXISTS `tbl_role`;

@@ -23,8 +23,35 @@ class Peminjaman extends MY_Controller
 	public function tambah()
 	{
 		$data['userlogin'] = $this->userlogin;
-		// $data['list_kategori'] = $this->m_kategori->listkategori();
+		$data['list_member'] = $this->m_member->listmember();
+		$data['list_buku'] = $this->m_buku->listbuku();
 		$this->template->load('template/v_layout','peminjaman/v_tambah', $data);
+	}
+
+	public function simpan_peminjaman()
+	{
+		$in_data['id_peminjaman'] = 'P-' . time();
+		$in_data['id_member'] = $this->db->escape_str($this->input->post('id_member'));
+		$in_data['id_buku'] = $this->db->escape_str($this->input->post('id_buku'));
+		$in_data['id_user'] = $this->userlogin[0]->id_user;
+		$in_data['tgl_pinjam'] = date('Y-m-d H:i:s');
+		$in_data['status_pinjam'] = 'Pinjam';
+		
+		if($this->m_peminjaman->insert($in_data))
+		{
+			$output['status_code'] = 200;
+			$output['title'] = "Berhasil";
+			$output['type'] = "success";
+			$output['message'] = "Berhasil menambahkan peminjaman buku.";
+		}
+		else
+		{
+			$output['status_code'] = 400;
+			$output['title'] = "Gagal";
+			$output['type'] = "error";
+			$output['message'] = "Gagal menambahkan peminjaman buku.";
+		}
+		echo json_encode($output);
 	}
 }
 
