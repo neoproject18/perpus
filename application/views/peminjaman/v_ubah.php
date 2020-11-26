@@ -11,26 +11,23 @@
     <div class="col-lg-12">
       <div class="card mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Peminjaman Baru</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Ubah Peminjaman</h6>
         </div>
         <div class="card-body">
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Member</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" id="id_member" disabled="">
+              <input type="text" class="form-control" id="id_member" disabled="" value="<?= $data_pinjam->id_member ?>">
             </div>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="nama_member" disabled="">
-            </div>
-            <div class="col-sm-2">
-              <button class="btn btn-primary" data-toggle="modal" data-target="#modal-member"><i class="fa fa-search"></i> Pilih</button>
+              <input type="text" class="form-control" id="nama_member" disabled="" value="<?= $data_pinjam->nama_member ?>">
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Buku</label>
             <div class="col-sm-7">
-              <input type="hidden" id="id_buku">
-              <input type="text" class="form-control" id="judul_buku" disabled="">
+              <input type="hidden" id="id_buku" value="<?= $data_pinjam->id_buku ?>">
+              <input type="text" class="form-control" id="judul_buku" disabled="" value="<?= $data_pinjam->judul_buku ?>">
             </div>
             <div class="col-sm-2">
               <button class="btn btn-primary" data-toggle="modal" data-target="#modal-buku"><i class="fa fa-search"></i> Pilih</button>
@@ -39,13 +36,22 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Penulis</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" id="penulis" disabled="">
+              <input type="text" class="form-control" id="penulis" disabled="" value="<?= $data_pinjam->penulis ?>">
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Penerbit / Tahun</label>
             <div class="col-sm-5">
-              <input type="text" class="form-control" id="penerbit_tahun" disabled="">
+              <input type="text" class="form-control" id="penerbit_tahun" disabled="" value="<?= $data_pinjam->penerbit . ' / ' . $data_pinjam->tahun_terbit ?>">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Status</label>
+            <div class="col-sm-3">
+              <select type="text" class="form-control" id="status">
+                <option value="Pinjam" <?php if($data_pinjam->status_pinjam == "Pinjam") echo "seletcted"; ?>>Pinjam</option>
+                <option value="Kembali" <?= $data_pinjam->status_pinjam == "Kembali" ? "selected" : "" ?>>Kembali</option>
+              </select>
             </div>
           </div>
           <div class="form-group row">
@@ -63,26 +69,26 @@
 
 <script type="text/javascript">
   function submit_pinjam(){
-    var idmember = $('#id_member').val();
     var idbuku = $('#id_buku').val();
+    var status = $('#status').val();
 
     swal({
       title: "Konfirmasi",
-      text: "Ingin menambahkan peminjaman buku?",
+      text: "Ingin mengubah peminjaman buku?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
     .then((submit) => {
       if (submit) {
-        if(idmember.length > 0 && idbuku.length > 0) 
+        if(idbuku.length > 0) 
         {
           $.ajax({
-            url : "<?= base_url('peminjaman/simpan_peminjaman') ?>",
+            url : "<?= base_url('peminjaman/ubah_peminjaman/' . $data_pinjam->id_peminjaman) ?>",
             type : "POST",
             data:{
-              id_member: idmember,
               id_buku: idbuku,
+              status: status,
             },
             success:function(result)
             {

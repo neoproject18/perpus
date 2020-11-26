@@ -18,6 +18,16 @@
           </a>
         </div>
         <div class="table-responsive p-3">
+          <div class="form-group row">
+            <label class="col-sm-1 col-form-label">Filter</label>
+            <div class="col-sm-3">
+              <select type="text" class="form-control form-control-sm" id="status">
+                <option value="semua">Semua</option>
+                <option value="pinjam">Pinjam</option>
+                <option value="kembali">Kembali</option>
+              </select>
+            </div>
+          </div>
           <table class="table align-items-center table-flush" id="dataTable">
             <thead class="thead-light">
               <tr>
@@ -43,7 +53,7 @@
                 <td><?= $value->status_pinjam ?></td>
                 <td>
                   <div class="btn-group">
-                    <button class="btn btn-success btn-sm" title="Edit"><span class="fas fa-edit"></span></button>
+                    <a href="<?= base_url('peminjaman/ubah/' . $value->id_peminjaman) ?>" class="btn btn-success btn-sm" title="Edit"><span class="fas fa-edit"></span></a>
                   </div>
                 </td>
               </tr>
@@ -67,4 +77,15 @@
     $('#no_telp_ubah').val(notelp);
     $('#modal-edit').modal('show'); 
   }
+
+  $('#status').change(function(e){
+    var status = document.getElementById("status").value;
+    window.location.href = "<?= base_url('peminjaman/filter/') ?>" + status;
+  });
+
+  $(document).ready(function(){
+    var status = "<?= $this->uri->segment(3) ?>";
+    if(status != "")
+      document.getElementById("status").value = "<?= $this->uri->segment(3) ?>";
+  });
 </script>

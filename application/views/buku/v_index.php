@@ -27,6 +27,7 @@
                 <th>PENERBIT</th>
                 <th>PENULIS</th>
                 <th>KATEGORI</th>
+                <th>JUMLAH</th>
                 <th>AKSI</th>
               </tr>
             </thead>
@@ -39,6 +40,7 @@
                 <td><?= $value->penerbit ?></td>
                 <td><?= $value->penulis ?></td>
                 <td><?= $value->nama_kategori ?></td>
+                <td><?= $value->jumlah ?></td>
                 <td>
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-cogs"></span>

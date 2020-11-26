@@ -48,7 +48,7 @@
           <thead class="thead-light">
             <tr>
               <th>ID</th>
-              <th>JUDUL</th>
+              <th>JUDUL / JUMLAH</th>
               <th>PENULIS</th>
               <th>PENERBIT / TAHUN</th>
             </tr>
@@ -57,7 +57,7 @@
             <?php foreach($list_buku as $value): ?>
             <tr>
               <td><?= $value->id_buku ?></td>
-              <td><?= $value->judul_buku ?></td>
+              <td><?= $value->judul_buku . ' / ' . $value->sisa ?></td>
               <td><?= $value->penulis ?></td>
               <td><?= $value->penerbit . ' / ' . $value->tahun_terbit ?></td>
             </tr>

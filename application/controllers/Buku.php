@@ -33,6 +33,7 @@ class Buku extends MY_Controller
 		$in_data['penerbit'] = $this->db->escape_str($this->input->post('penerbit'));
 		$in_data['penulis'] = $this->db->escape_str($this->input->post('penulis'));
 		$in_data['id_kategori'] = $this->db->escape_str($this->input->post('id_kategori'));
+		$in_data['jumlah'] = $this->db->escape_str($this->input->post('jumlah'));
 		
 		if($this->m_buku->insert($in_data))
 		{
@@ -68,6 +69,7 @@ class Buku extends MY_Controller
 		$in_data['penerbit'] = $this->db->escape_str($this->input->post('penerbit'));
 		$in_data['penulis'] = $this->db->escape_str($this->input->post('penulis'));
 		$in_data['id_kategori'] = $this->db->escape_str($this->input->post('id_kategori'));
+		$in_data['jumlah'] = $this->db->escape_str($this->input->post('jumlah'));
 		
 		if($this->m_buku->update($in_data, $id_data))
 		{
