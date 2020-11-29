@@ -65,19 +65,8 @@
   </div>
 </div>
 </div>
-<?php $this->load->view('member/v_modal'); ?>
 
 <script type="text/javascript">
-  function formubah(idmember, namamember, alamat, email, notelp)
-  {
-    $('#id_member_ubah').val(idmember);
-    $('#nama_member_ubah').val(namamember);
-    $('#alamat_ubah').val(alamat);
-    $('#email_ubah').val(email);
-    $('#no_telp_ubah').val(notelp);
-    $('#modal-edit').modal('show'); 
-  }
-
   $('#status').change(function(e){
     var status = document.getElementById("status").value;
     window.location.href = "<?= base_url('peminjaman/filter/') ?>" + status;

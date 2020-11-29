@@ -56,7 +56,6 @@
                 <input type="number" class="form-control" placeholder="Jumlah" id="jumlah" value="<?= $data_buku->jumlah ?>">
               </div>
             </div>
-            
             <div class="form-group row">
               <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i> Simpan</button>

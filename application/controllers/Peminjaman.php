@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Peminjaman extends MY_Controller 
 {
 	private $userlogin;
-	private $encryption_key = '0123456789';
 	public function __construct()
 	{
 		parent::__construct();
