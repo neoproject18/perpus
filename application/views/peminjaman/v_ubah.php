@@ -84,7 +84,7 @@
         if(idbuku.length > 0) 
         {
           $.ajax({
-            url : "<?= base_url('peminjaman/ubah_peminjaman/' . $data_pinjam->id_peminjaman) ?>",
+            url : "<?= base_url('peminjaman/ubah_peminjaman/'.$data_pinjam->id_peminjaman) ?>",
             type : "POST",
             data:{
               id_buku: idbuku,

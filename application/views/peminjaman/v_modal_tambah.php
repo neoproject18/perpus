@@ -55,27 +55,26 @@
           </thead>
           <tbody>
             <?php foreach($list_buku as $value): ?>
-            <tr>
-              <td><?= $value->id_buku ?></td>
-              <td><?= $value->judul_buku . ' / ' . $value->sisa ?></td>
-              <td><?= $value->penulis ?></td>
-              <td><?= $value->penerbit . ' / ' . $value->tahun_terbit ?></td>
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><span class="fa fa-times"></span> Close</button>
+              <tr>
+                <td><?= $value->id_buku ?></td>
+                <td><?= $value->judul_buku . ' / ' . $value->sisa ?></td>
+                <td><?= $value->penulis ?></td>
+                <td><?= $value->penerbit . ' / ' . $value->tahun_terbit ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><span class="fa fa-times"></span> Close</button>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <script type="text/javascript">
   $(document).ready(function() {
     var table_member = $('#dataTable').DataTable();
-    var table_buku = $('#dataTable2').DataTable();
 
     $('#dataTable tbody').on('click', 'tr', function () {
       var data_member = table_member.row( this ).data();
@@ -84,6 +83,8 @@
       $('#modal-member').modal('hide');
     });
 
+    
+    var table_buku = $('#dataTable2').DataTable();
     $('#dataTable2 tbody').on('click', 'tr', function () {
       var data_buku = table_buku.row( this ).data();
       document.getElementById("id_buku").value = data_buku[0];
