@@ -19,10 +19,10 @@ class Peminjaman extends MY_Controller
 		$this->template->load('template/v_layout','peminjaman/v_index', $data);
 	}
 
-	public function filter($status)
+	public function filter($status, $tgl_awal, $tgl_akhir)
 	{
 		$data['userlogin'] = $this->userlogin;
-		$data['listdata'] = $this->m_peminjaman->filter_list_peminjaman($status);
+		$data['listdata'] = $this->m_peminjaman->filter_list_peminjaman($status, $tgl_awal, $tgl_akhir);
 		$this->template->load('template/v_layout','peminjaman/v_index', $data);
 	}
 

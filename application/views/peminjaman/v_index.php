@@ -18,15 +18,27 @@
           </a>
         </div>
         <div class="table-responsive p-3">
+          <span style="color: red; font-style: italic; font-size: 12px;">Filter berdasarkan status dan range tanggal.</span>
           <div class="form-group row">
             <label class="col-sm-1 col-form-label">Filter</label>
-            <div class="col-sm-3">
-              <select type="text" class="form-control form-control-sm" id="status">
+            <div class="col-sm-2">
+              <select type="text" class="form-control form-control-sm" id="status" title="Status">
                 <option value="semua">Semua</option>
                 <option value="pinjam">Pinjam</option>
                 <option value="kembali">Kembali</option>
               </select>
             </div>
+            <div class="col-sm-2">
+              <input type="date" class="form-control form-control-sm" id="tgl_awal" value="<?= date('Y-m-01') ?>" title="Tanggal Awal">
+            </div>
+            <div class="col-sm-2">
+              <input type="date" class="form-control form-control-sm" id="tgl_akhir" value="<?= date('Y-m-t') ?>" title="Tanggal Akhir">
+            </div>
+            <?php if($this->uri->segment(2) != ""): ?>
+              <div class="btn-group mb-1">
+                <a href="<?= base_url('peminjaman') ?>" title="Refresh"><i class="fas fa-history"></i></a>
+              </div>
+            <?php endif; ?>
           </div>
           <table class="table align-items-center table-flush" id="dataTable">
             <thead class="thead-light">
@@ -67,14 +79,25 @@
 </div>
 
 <script type="text/javascript">
-  $('#status').change(function(e){
+  function filterData()
+  {
     var status = document.getElementById("status").value;
-    window.location.href = "<?= base_url('peminjaman/filter/') ?>" + status;
-  });
+    var startdate = document.getElementById("tgl_awal").value;
+    var enddate = document.getElementById("tgl_akhir").value;
+    window.location.href = "<?= base_url('peminjaman/filter/') ?>" + status + "/" + startdate + "/" + enddate;
+  }
+
+  $('#status').change(function(e) { filterData(); });
+  $('#tgl_awal').change(function(e) { filterData(); });
+  $('#tgl_akhir').change(function(e) { filterData(); });
 
   $(document).ready(function(){
-    var status = "<?= $this->uri->segment(3) ?>";
-    if(status != "")
+    var filter = "<?= $this->uri->segment(3) ?>";
+    if(filter != "")
+    {
       document.getElementById("status").value = "<?= $this->uri->segment(3) ?>";
+      document.getElementById("tgl_awal").value = "<?= $this->uri->segment(4) ?>";
+      document.getElementById("tgl_akhir").value = "<?= $this->uri->segment(5) ?>";
+    }
   });
 </script>

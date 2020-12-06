@@ -13,11 +13,11 @@ class M_peminjaman extends CI_Model
 			WHERE p.status_pinjam = 'Pinjam'")->result();
 	}
 
-	public function filter_list_peminjaman($status)
+	public function filter_list_peminjaman($status, $tgl_awal, $tgl_akhir)
 	{
 		if($status != "semua")
-			$st = "WHERE p.status_pinjam = '$status'";
-		else $st = "";
+			$st = "WHERE p.status_pinjam = '$status' AND p.tgl_pinjam BETWEEN '$tgl_awal' AND '$tgl_akhir'";
+		else $st = "WHERE p.tgl_pinjam BETWEEN '$tgl_awal' AND '$tgl_akhir'";
 
 		return $this->db->query("SELECT p.id_peminjaman, m.*, b.*, p.id_user, u.nama_user, p.tgl_pinjam, p.tgl_kembali, p.status_pinjam FROM tbl_peminjaman p 
 			JOIN tbl_member m ON m.id_member = p.id_member
