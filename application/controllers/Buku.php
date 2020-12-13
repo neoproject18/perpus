@@ -8,6 +8,7 @@ class Buku extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->model(array('m_buku', 'm_kategori'));
+		$this->load->library(array('PHPExcel', 'excel',));
 		$this->cekLogin();
 		$this->userlogin = $this->getUserData();
 	}
@@ -115,6 +116,57 @@ class Buku extends MY_Controller
 	{
 		if($this->m_buku->delete($idbuku))
 			redirect('buku', 'refresh');
+	}
+
+	public function import_buku()
+	{
+		if(isset($_FILES["file"]["name"]))
+		{
+			$path = $_FILES["file"]["tmp_name"];
+			$object = PHPExcel_IOFactory::load($path);
+			foreach($object->getWorksheetIterator() as $worksheet)
+			{
+				$highestRow = $worksheet->getHighestRow();
+				$highestColumn = $worksheet->getHighestColumn();
+				for($row=2; $row<=$highestRow; $row++)
+				{   
+					$judul = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+					$penulis= $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+					$penerbit= $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+					$tahun= $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+					$idkat= $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+					$jml= $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+
+					if($judul != "" || $penulis != "" || $penerbit != "" || $tahun != "" || $idkat != "" || $jml != "")
+					{
+						$data[] = array(
+							'judul_buku' => $judul,
+							'penulis' => $penulis,
+							'penerbit' => $penerbit,
+							'tahun_terbit' => $tahun,
+							'id_kategori' => $idkat,
+							'jumlah' => $jml
+						);
+					}
+				}
+			}
+
+			if($this->m_buku->import_data($data))
+			{
+				$output['status_code'] = 200;
+				$output['title'] = "Berhasil";
+				$output['type'] = "success";
+				$output['message'] = "Berhasil import buku.";
+			}
+			else
+			{
+				$output['status_code'] = 400;
+				$output['title'] = "Gagal";
+				$output['type'] = "error";
+				$output['message'] = "Gagal import buku.";
+			}
+			echo json_encode($output);
+		} 
 	}
 }
 

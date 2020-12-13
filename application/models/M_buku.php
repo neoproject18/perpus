@@ -25,6 +25,13 @@ class M_buku extends CI_Model
 		return false;
 	}
 
+	public function import_data($data)
+	{
+		if($this->db->insert_batch($this->_tbl_buku, $data))
+			return true;
+		return false;
+	}
+
 	public function update($data, $fieldkey)
 	{
 		if($this->db->update($this->_tbl_buku, $data, $fieldkey))
