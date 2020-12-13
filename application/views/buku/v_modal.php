@@ -21,7 +21,6 @@
           <button type="submit" class="btn btn-primary btn-sm"><span class="fa fa-check-circle"></span> Import</button>
           <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><span class="fa fa-times"></span> Close</button>
         </div>
-
       </form>
     </div>
   </div>

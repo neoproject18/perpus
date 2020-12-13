@@ -137,7 +137,7 @@ class Buku extends MY_Controller
 					$idkat= $worksheet->getCellByColumnAndRow(4, $row)->getValue();
 					$jml= $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
-					if($judul != "" || $penulis != "" || $penerbit != "" || $tahun != "" || $idkat != "" || $jml != "")
+					if($judul != "" && $penulis != "" && $penerbit != "" && $tahun != "" && $idkat != "" && $jml != "")
 					{
 						$data[] = array(
 							'judul_buku' => $judul,
