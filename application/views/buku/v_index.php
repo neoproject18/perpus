@@ -13,9 +13,10 @@
       <div class="card mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">List Buku</h6>
-          <a href="<?= base_url('buku/tambah') ?>" class="m-0 float-right btn btn-primary btn-sm">
-            <i class="fa fa-plus-circle"></i> Tambah
-          </a>
+          <div class="btn-group">
+            <a href="<?= base_url('buku/tambah') ?>" class="m-0 float-right btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i> Tambah</a>
+            <button class="m-0 float-right btn btn-success btn-sm" data-toggle="modal" data-target="#modal-import"><i class="fa fa-upload"></i> Import</button>
+          </div>
         </div>
         <div class="table-responsive p-3">
           <table class="table align-items-center table-flush" id="dataTable">
@@ -27,6 +28,7 @@
                 <th>PENERBIT</th>
                 <th>PENULIS</th>
                 <th>KATEGORI</th>
+                <th>JUMLAH</th>
                 <th>AKSI</th>
               </tr>
             </thead>
@@ -39,6 +41,7 @@
                 <td><?= $value->penerbit ?></td>
                 <td><?= $value->penulis ?></td>
                 <td><?= $value->nama_kategori ?></td>
+                <td><?= $value->jumlah ?></td>
                 <td>
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-cogs"></span>
@@ -58,6 +61,7 @@
   </div>
 </div>
 </div>
+<?php $this->load->view('buku/v_modal'); ?>
 
 <script type="text/javascript">
   function delete_buku(id_buku, judul_buku){

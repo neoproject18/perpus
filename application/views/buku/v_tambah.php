@@ -51,6 +51,12 @@
               </div>
             </div>
             <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Jumlah</label>
+              <div class="col-sm-2">
+                <input type="number" class="form-control" placeholder="Jumlah" id="jumlah">
+              </div>
+            </div>
+            <div class="form-group row">
               <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i> Simpan</button>
                 <button type="reset" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> Batal</button>
@@ -70,8 +76,9 @@
     var penerbit = $('#penerbit').val();
     var tahun = $('#tahun').val();
     var id_kategori = $('#id_kategori').val();
+    var jml = $('#jumlah').val();
 
-    if(judul.length > 0 && penulis.length > 0 && penerbit.length > 0 && tahun.length > 0 && id_kategori.length > 0) 
+    if(judul.length > 0 && penulis.length > 0 && penerbit.length > 0 && tahun.length > 0 && id_kategori.length > 0 && jml.length > 0) 
     {
       $.ajax({
         url : "<?= base_url('buku/simpan') ?>",
@@ -82,6 +89,7 @@
           penerbit: penerbit,
           tahun: tahun,
           id_kategori: id_kategori,
+          jumlah: jml,
         },
         success:function(result)
         {

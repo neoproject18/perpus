@@ -1,5 +1,5 @@
 /*
-SQLyog Professional
+SQLyog Professional v12.5.1 (64 bit)
 MySQL - 10.4.11-MariaDB : Database - dbperpus
 *********************************************************************
 */
@@ -27,24 +27,25 @@ CREATE TABLE `tbl_buku` (
   `penerbit` varchar(30) NOT NULL,
   `penulis` varchar(30) NOT NULL,
   `id_kategori` int(3) NOT NULL,
+  `jumlah` int(3) NOT NULL,
   `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_buku`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_buku` */
 
-insert  into `tbl_buku`(`id_buku`,`judul_buku`,`tahun_terbit`,`penerbit`,`penulis`,`id_kategori`,`isdeleted`) values 
-(1,'Pintar Matematika',2015,'Erlangga','Jarno',1,0),
-(2,'Hidup Sehat Sejati',2020,'Erlangga','Jino',1,1),
-(3,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,1),
-(4,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,1),
-(5,'Kisah 1004',2020,'Bentang Pustaka','Andrea Hirata',2,1),
-(6,'Ayah',2015,'Bentang Pustaka','Andrea Hirata',2,1),
-(7,'Habis Gelap Terbitlah Terang',1997,'Gramedia','Anom',1,0),
-(8,'Peraih Mimpi',2000,'Bentang Pustaka','Tere Liye',2,1),
-(9,'Ayat Cinta',2000,'Gramedia','Arman',2,0),
-(10,'Buku Matematika',2020,'Erlangga','Arya',1,0),
-(12,'Hidup Sehat',2020,'Bentang Pustaka','Anom',1,1);
+insert  into `tbl_buku`(`id_buku`,`judul_buku`,`tahun_terbit`,`penerbit`,`penulis`,`id_kategori`,`jumlah`,`isdeleted`) values 
+(1,'Pintar Matematika',2015,'Erlangga','Jarno',1,3,0),
+(2,'Hidup Sehat Sejati',2020,'Erlangga','Jino',1,0,1),
+(3,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,0,1),
+(4,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,0,1),
+(5,'Kisah 1004',2020,'Bentang Pustaka','Andrea Hirata',2,0,1),
+(6,'Ayah',2015,'Bentang Pustaka','Andrea Hirata',2,0,1),
+(7,'Habis Gelap Terbitlah Terang',1997,'Gramedia','Anom',1,5,0),
+(8,'Peraih Mimpi',2000,'Bentang Pustaka','Tere Liye',2,0,1),
+(9,'Ayat Cinta',2000,'Gramedia','Arman',2,1,0),
+(10,'Buku Matematika',2020,'Erlangga','Arya',1,2,0),
+(12,'Hidup Sehat',2020,'Bentang Pustaka','Anom',1,0,1);
 
 /*Table structure for table `tbl_kategori` */
 
@@ -100,6 +101,12 @@ CREATE TABLE `tbl_peminjaman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_peminjaman` */
+
+insert  into `tbl_peminjaman`(`id_peminjaman`,`id_member`,`id_user`,`id_buku`,`tgl_pinjam`,`tgl_kembali`,`status_pinjam`) values 
+('P-1606061261','M-2010002',1,10,'2020-11-22 17:07:41','2020-11-26 05:34:47','Kembali'),
+('P-1606363609','M-2010001',1,1,'2020-11-26 05:06:49','2021-01-04 04:45:26','Kembali'),
+('P-1606752907','M-2010001',1,7,'2020-11-30 17:15:07',NULL,'Pinjam'),
+('P-1607303364','M-2010002',1,10,'2020-12-07 02:09:24',NULL,'Pinjam');
 
 /*Table structure for table `tbl_role` */
 

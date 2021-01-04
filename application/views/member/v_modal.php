@@ -93,7 +93,7 @@
     var email = $('#email').val();
     var notelp = $('#no_telp').val();
 
-    if(nama.length > 0 || alamat.length > 0 || email.length > 0 || notelp.length > 0)
+    if(nama.length > 0 && alamat.length > 0 && email.length > 0 && notelp.length > 0)
     {
       $.ajax({
         url : "<?= base_url('member/save') ?>",
@@ -124,7 +124,7 @@
     var email = $('#email_ubah').val();
     var notelp = $('#no_telp_ubah').val();
 
-    if(nama.length > 0 || alamat.length > 0 || email.length > 0 || notelp.length > 0)
+    if(nama.length > 0 && alamat.length > 0 && email.length > 0 && notelp.length > 0)
     {
       $.ajax({
         url : "<?= base_url('member/update') ?>",

@@ -25,6 +25,13 @@ class M_buku extends CI_Model
 		return false;
 	}
 
+	public function import_data($data)
+	{
+		if($this->db->insert_batch($this->_tbl_buku, $data))
+			return true;
+		return false;
+	}
+
 	public function update($data, $fieldkey)
 	{
 		if($this->db->update($this->_tbl_buku, $data, $fieldkey))
@@ -38,6 +45,16 @@ class M_buku extends CI_Model
 		if($this->db->delete($this->_tbl_buku))
 			return true;
 		return false;
+	}
+
+	// Peminjaman
+	public function listbukutersedia()
+	{
+		return $this->db->query("SELECT b.*, k.nama_kategori, 
+			(SELECT b.jumlah - COUNT(*) FROM tbl_peminjaman p WHERE p.status_pinjam = 'Pinjam' AND p.id_buku = b.id_buku) sisa
+			FROM tbl_buku b
+			JOIN tbl_kategori k ON k.id_kategori = b.id_kategori
+			WHERE b.isdeleted = 0 AND (SELECT b.jumlah - COUNT(*) FROM tbl_peminjaman p WHERE p.status_pinjam = 'Pinjam' AND p.id_buku = b.id_buku) > 0")->result();
 	}
 }
 

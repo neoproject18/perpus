@@ -162,17 +162,9 @@ aria-labelledby="messagesDropdown">
   <span class="ml-2 d-none d-lg-inline text-white small"><?= $userlogin[0]->nama_user ?></span>
 </a>
 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-  <a class="dropdown-item" href="#">
-    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-    Profile
-  </a>
-  <a class="dropdown-item" href="#">
-    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-    Settings
-  </a>
-  <a class="dropdown-item" href="#">
-    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-    Activity Log
+  <a class="dropdown-item" href="<?= base_url('profil/ubahpassword') ?>">
+    <i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
+    Ubah Password
   </a>
   <div class="dropdown-divider"></div>
   <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">

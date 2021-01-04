@@ -105,7 +105,7 @@
       if (submit) {
         $.ajax({
           url:"<?= base_url('user/resetpassword/') ?>" + iduser,
-          type:"DELETE",
+          type:"POST",
           success:function(result){
             var hasil = JSON.parse(result);
             swal_confirm_ok(hasil);
