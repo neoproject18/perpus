@@ -60,8 +60,8 @@
                 <td><?= $value->id_peminjaman ?></td>
                 <td><?= $value->nama_member ?></td>
                 <td><?= $value->judul_buku ?></td>
-                <td><?= $value->tgl_pinjam ?></td>
-                <td><?= $value->tgl_kembali ?></td>
+                <td><?= short_datetime($value->tgl_pinjam) ?></td>
+                <td><?= short_datetime($value->tgl_kembali) ?></td>
                 <td><?= $value->status_pinjam ?></td>
                 <td>
                   <div class="btn-group">
