@@ -28,7 +28,6 @@
 
 <script type="text/javascript">
   $('#formImport').submit(function(e){
-    alert('data');
     e.preventDefault(); 
     $.ajax({
       url:'<?= base_url('buku/import_buku') ?>',
