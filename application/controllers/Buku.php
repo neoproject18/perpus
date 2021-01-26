@@ -8,7 +8,7 @@ class Buku extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->model(array('m_buku', 'm_kategori'));
-		$this->load->library(array('PHPExcel', 'excel',));
+		$this->load->library(array('PHPExcel', 'excel'));
 		$this->cekLogin();
 		$this->userlogin = $this->getUserData();
 	}
