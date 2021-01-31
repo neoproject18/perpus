@@ -1,5 +1,5 @@
 /*
-SQLyog Professional v12.5.1 (64 bit)
+SQLyog Professional
 MySQL - 10.4.11-MariaDB : Database - dbperpus
 *********************************************************************
 */
@@ -46,6 +46,33 @@ insert  into `tbl_buku`(`id_buku`,`judul_buku`,`tahun_terbit`,`penerbit`,`penuli
 (9,'Ayat Cinta',2000,'Gramedia','Arman',2,1,0),
 (10,'Buku Matematika',2020,'Erlangga','Arya',1,2,0),
 (12,'Hidup Sehat',2020,'Bentang Pustaka','Anom',1,0,1);
+
+/*Table structure for table `tbl_bulan` */
+
+DROP TABLE IF EXISTS `tbl_bulan`;
+
+CREATE TABLE `tbl_bulan` (
+  `id_bulan` int(2) NOT NULL AUTO_INCREMENT,
+  `bulan` varchar(15) DEFAULT NULL,
+  `inisial` char(3) DEFAULT NULL,
+  PRIMARY KEY (`id_bulan`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tbl_bulan` */
+
+insert  into `tbl_bulan`(`id_bulan`,`bulan`,`inisial`) values 
+(1,'Januari','Jan'),
+(2,'Februari','Feb'),
+(3,'Maret','Mar'),
+(4,'April','Apr'),
+(5,'Mei','Mei'),
+(6,'Juni','Jun'),
+(7,'Juli','Jul'),
+(8,'Agustus','Ags'),
+(9,'September','Sep'),
+(10,'Oktober','Okt'),
+(11,'November','Nov'),
+(12,'Desember','Des');
 
 /*Table structure for table `tbl_kategori` */
 
@@ -101,6 +128,12 @@ CREATE TABLE `tbl_peminjaman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_peminjaman` */
+
+insert  into `tbl_peminjaman`(`id_peminjaman`,`id_member`,`id_user`,`id_buku`,`tgl_pinjam`,`tgl_kembali`,`status_pinjam`) values 
+('P-1606061261','M-2010002',1,10,'2020-11-22 17:07:41','2020-11-26 05:34:47','Kembali'),
+('P-1606363609','M-2010001',1,9,'2020-11-26 05:06:49','2020-11-29 18:17:19','Kembali'),
+('P-1606752907','M-2010001',1,7,'2020-11-30 17:15:07',NULL,'Pinjam'),
+('P-1607303364','M-2010002',1,10,'2020-12-07 02:09:24','2020-12-07 02:10:36','Kembali');
 
 /*Table structure for table `tbl_role` */
 
