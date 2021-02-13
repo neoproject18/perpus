@@ -16,7 +16,7 @@ class Buku extends MY_Controller
 	public function index()
 	{
 		$data['userlogin'] = $this->userlogin;
-		$data['listdata'] = $this->m_buku->listbuku();
+		$data['listdata'] = $this->m_buku->listbuku()->result();
 		$this->template->load('template/v_layout','buku/v_index', $data);
 	}
 
@@ -167,6 +167,17 @@ class Buku extends MY_Controller
 			}
 			echo json_encode($output);
 		} 
+	}
+
+	public function exportlistbuku()
+	{
+		$listdata = $this->m_buku->listbuku()->result_array();
+
+		$data = array(
+			'title' => 'List Buku - ' . time(),
+			'listdata' => $listdata
+		);
+		$this->load->view('buku/v_list_buku_xls', $data);
 	}
 }
 

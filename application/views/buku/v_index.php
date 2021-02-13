@@ -16,6 +16,7 @@
           <div class="btn-group">
             <a href="<?= base_url('buku/tambah') ?>" class="m-0 float-right btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i> Tambah</a>
             <button class="m-0 float-right btn btn-success btn-sm" data-toggle="modal" data-target="#modal-import"><i class="fa fa-upload"></i> Import</button>
+            <a href="<?= base_url('buku/exportlistbuku') ?>"  class="m-0 float-right btn btn-default btn-sm"><i class="fa fa-download"></i> Export</a>
           </div>
         </div>
         <div class="table-responsive p-3">
