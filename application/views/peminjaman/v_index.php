@@ -13,9 +13,10 @@
       <div class="card mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">List Peminjaman</h6>
-          <a href="<?= base_url('peminjaman/tambah') ?>" class="m-0 float-right btn btn-primary btn-sm">
-            <i class="fa fa-plus-circle"></i> Tambah
-          </a>
+          <div class="btn-group">            
+            <a href="<?= base_url('peminjaman/tambah') ?>" class="m-0 float-right btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i> Tambah</a>
+            <button onclick="exportlistpeminjaman()"  class="m-0 float-right btn btn-default btn-sm"><i class="fa fa-download"></i> Export</button>
+          </div>
         </div>
         <div class="table-responsive p-3">
           <span style="color: red; font-style: italic; font-size: 12px;">Filter berdasarkan status dan range tanggal.</span>
@@ -100,4 +101,14 @@
       document.getElementById("tgl_akhir").value = "<?= $this->uri->segment(5) ?>";
     }
   });
+
+  function exportlistpeminjaman()
+  {
+    var status = document.getElementById("status").value;
+    var startdate = document.getElementById("tgl_awal").value;
+    var enddate = document.getElementById("tgl_akhir").value;
+    window.location.href = "<?= base_url('peminjaman/exportlistpeminjaman/') ?>" + status + "/" + startdate + "/" + enddate;
+  }
+
+  
 </script>
