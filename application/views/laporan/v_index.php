@@ -13,6 +13,9 @@
       <div class="card mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">Laporan Bulanan</h6>
+          <div class="btn-group">
+            <button onclick="exportlaporan()"  class="m-0 float-right btn btn-default btn-sm"><i class="fa fa-download"></i> Export</button>
+          </div>
         </div>
         <div class="table-responsive p-3">
           <!-- Isi Body -->
@@ -61,4 +64,10 @@
       document.getElementById("tahun").value = "<?= $this->uri->segment(3) ?>";
     }
   });
+
+  function exportlaporan()
+  {
+    var tahun = document.getElementById("tahun").value;
+    window.open("<?= base_url('laporan/exportpdf/') ?>" + tahun, "_blank");
+  }
 </script>
