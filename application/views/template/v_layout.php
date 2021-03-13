@@ -18,6 +18,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <!-- Sweetalert Css -->
   <link href="<?= base_url('assets/') ?>plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+  <script src="<?= base_url('assets/') ?>vendor/chart.js/Chart.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -85,6 +86,8 @@
 <!-- SweetAlert Plugin Js -->
 <script src="<?= base_url('assets/') ?>plugins/sweetalert/sweetalert.min.js"></script>
 <script src="<?= base_url('assets/') ?>plugins/sweetalert/sweetshow.js"></script>
+
+
 
 <!-- Page level custom scripts -->
 <script>
