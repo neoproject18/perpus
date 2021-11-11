@@ -56,6 +56,14 @@
                 <input type="number" class="form-control" placeholder="Jumlah" id="jumlah">
               </div>
             </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Gambar</label>
+              <div class="col-sm-9">
+                <input type="file" class="form-control" id="jumlah" accept="image/*">
+              </div>
+            </div>
+
             <div class="form-group row">
               <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i> Simpan</button>

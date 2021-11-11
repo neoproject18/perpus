@@ -1,6 +1,6 @@
 /*
-SQLyog Professional
-MySQL - 10.4.11-MariaDB : Database - dbperpus
+SQLyog Enterprise v12.5.1 (64 bit)
+MySQL - 10.4.21-MariaDB : Database - dbperpus
 *********************************************************************
 */
 
