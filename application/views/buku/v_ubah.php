@@ -14,35 +14,35 @@
           <h6 class="m-0 font-weight-bold text-primary">Ubah Buku</h6>
         </div>
         <div class="card-body">
-          <form onsubmit="submit_buku(); return false;">
+          <form id="formSubmit">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Judul Buku</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Judul Buku" id="judul" value="<?= $data_buku->judul_buku ?>">
+                <input type="text" class="form-control" placeholder="Judul Buku" name="judul" id="judul" value="<?= $data_buku->judul_buku ?>">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Penulis</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Penulis" id="penulis" value="<?= $data_buku->penulis ?>">
+                <input type="text" class="form-control" placeholder="Penulis" name="penulis" id="penulis" value="<?= $data_buku->penulis ?>">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Penerbit</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Penerbit" id="penerbit" value="<?= $data_buku->penerbit ?>">
+                <input type="text" class="form-control" placeholder="Penerbit" id="penerbit" name="penerbit" value="<?= $data_buku->penerbit ?>">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Tahun Terbit</label>
               <div class="col-sm-2">
-                <input type="number" class="form-control" placeholder="Tahun Terbit" id="tahun" value="<?= $data_buku->tahun_terbit ?>">
+                <input type="number" class="form-control" placeholder="Tahun Terbit" name="tahun" id="tahun" value="<?= $data_buku->tahun_terbit ?>">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Kategori</label>
               <div class="col-sm-9">
-                <select type="text" class="form-control" placeholder="Kategori" id="id_kategori">
+                <select type="text" class="form-control" placeholder="Kategori" name="id_kategori" id="id_kategori">
                   <option value="">Pilih Kategori</option>
                   <?php foreach($list_kategori as $value): ?>
                     <option value="<?= $value->id_kategori ?>" <?= $data_buku->id_kategori == $value->id_kategori ? 'selected': '' ?>><?= $value->nama_kategori ?></option>
@@ -53,9 +53,17 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Jumlah</label>
               <div class="col-sm-2">
-                <input type="number" class="form-control" placeholder="Jumlah" id="jumlah" value="<?= $data_buku->jumlah ?>">
+                <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" id="jumlah" value="<?= $data_buku->jumlah ?>">
               </div>
             </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Gambar</label>
+              <div class="col-sm-9">
+                <input type="file" class="form-control" name="gambar" accept="image/*">
+              </div>
+            </div>
+
             <div class="form-group row">
               <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-check-circle"></i> Simpan</button>
@@ -71,7 +79,12 @@
 
 
 <script type="text/javascript">
-  function submit_buku(){
+  function pageRedirect(){
+    window.location.href = "<?= base_url('buku') ?>";
+  }
+
+  $('#formSubmit').submit(function(e)
+  {     
     var judul = $('#judul').val();
     var penulis = $('#penulis').val();
     var penerbit = $('#penerbit').val();
@@ -81,26 +94,27 @@
 
     if(judul.length > 0 && penulis.length > 0 && penerbit.length > 0 && tahun.length > 0 && id_kategori.length > 0 && jml.length > 0) 
     {
+      e.preventDefault();
       $.ajax({
         url : "<?= base_url('buku/update/' . $data_buku->id_buku) ?>",
-        type : "POST",
-        data:{
-          judul: judul,
-          penulis: penulis,
-          penerbit: penerbit,
-          tahun: tahun,
-          id_kategori: id_kategori,
-          jumlah: jml,
-        },
-        success:function(result)
-        {
+        type:"post",
+        data: new FormData(this),
+        processData:false,
+        contentType:false,
+        cache:true,
+        async:false,
+        success:function(result){
           var hasil = JSON.parse(result);
           swal_show(hasil);
 
           if(hasil['status_code'] == 200)
-            setTimeout("window.history.back()", 1500);
+            setTimeout("pageRedirect()", 1500);
+        },
+        error:function(result){
+          swal_error(result);
         },
       });
     }
-  }
+    else swal_alert("Peringatan", "Silahkan lengkapi data!", "warning");
+  });
 </script>

@@ -24,6 +24,7 @@
             <thead class="thead-light">
               <tr>
                 <th>NO</th>
+                <th>GAMBAR</th>
                 <th>JUDUL</th>
                 <th>TAHUN TERBIT</th>
                 <th>PENERBIT</th>
@@ -37,6 +38,11 @@
               <?php $no=1; foreach($listdata as $value): ?>
               <tr>
                 <td><?= $no++ ?></td>
+                <td>
+                  <?php if($value->gambar != null): ?>
+                    <img src="<?= base_url($value->gambar) ?>" width="100">
+                  <?php endif ?>
+                </td>
                 <td><?= $value->judul_buku ?></td>
                 <td><?= $value->tahun_terbit ?></td>
                 <td><?= $value->penerbit ?></td>
