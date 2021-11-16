@@ -154,6 +154,10 @@ class Buku extends MY_Controller
 
 		if($this->m_buku->update($in_data, $id_data))
 		{
+			$dataBuku = $this->m_buku->listbuku_byid($idbuku);
+			// digunakan untuk menghapus file yang sebelumnya pernah diupload
+			@unlink("./" . $dataBuku->gambar);
+			
 			$output['status_code'] = 200;
 			$output['title'] = "Berhasil";
 			$output['type'] = "success";
