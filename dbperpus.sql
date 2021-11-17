@@ -1,5 +1,5 @@
 /*
-SQLyog Professional
+SQLyog Professional v12.5.1 (64 bit)
 MySQL - 10.4.11-MariaDB : Database - dbperpus
 *********************************************************************
 */
@@ -28,24 +28,29 @@ CREATE TABLE `tbl_buku` (
   `penulis` varchar(30) NOT NULL,
   `id_kategori` int(3) NOT NULL,
   `jumlah` int(3) NOT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
   `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_buku`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_buku` */
 
-insert  into `tbl_buku`(`id_buku`,`judul_buku`,`tahun_terbit`,`penerbit`,`penulis`,`id_kategori`,`jumlah`,`isdeleted`) values 
-(1,'Pintar Matematika',2015,'Erlangga','Jarno',1,3,0),
-(2,'Hidup Sehat Sejati',2020,'Erlangga','Jino',1,0,1),
-(3,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,0,1),
-(4,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,0,1),
-(5,'Kisah 1004',2020,'Bentang Pustaka','Andrea Hirata',2,0,1),
-(6,'Ayah',2015,'Bentang Pustaka','Andrea Hirata',2,0,1),
-(7,'Habis Gelap Terbitlah Terang',1997,'Gramedia','Anom',1,5,0),
-(8,'Peraih Mimpi',2000,'Bentang Pustaka','Tere Liye',2,0,1),
-(9,'Ayat Cinta',2000,'Gramedia','Arman',2,1,0),
-(10,'Buku Matematika',2020,'Erlangga','Arya',1,2,0),
-(12,'Hidup Sehat',2020,'Bentang Pustaka','Anom',1,0,1);
+insert  into `tbl_buku`(`id_buku`,`judul_buku`,`tahun_terbit`,`penerbit`,`penulis`,`id_kategori`,`jumlah`,`gambar`,`isdeleted`) values 
+(1,'Pintar Matematika',2015,'Erlangga','Jarno',1,3,'./uploads/buku/1636962148.jpg',0),
+(2,'Hidup Sehat Sejati',2020,'Erlangga','Jino',1,0,NULL,1),
+(3,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,0,NULL,1),
+(4,'Kisah 1002',2020,'Bentang Pustaka','Andrea Hirata',2,0,NULL,1),
+(5,'Kisah 1004',2020,'Bentang Pustaka','Andrea Hirata',2,0,NULL,1),
+(6,'Ayah',2015,'Bentang Pustaka','Andrea Hirata',2,0,NULL,1),
+(7,'Habis Gelap Terbitlah Terang',1997,'Gramedia','Anom',1,5,'./uploads/buku/1636962185.jpg',1),
+(8,'Peraih Mimpi',2000,'Bentang Pustaka','Tere Liye',2,0,NULL,1),
+(9,'Ayat Cinta',2000,'Gramedia','Arman',2,1,NULL,0),
+(10,'Buku Matematika',2020,'Erlangga','Arya',1,2,NULL,0),
+(12,'Hidup Sehat',2020,'Bentang Pustaka','Anom',1,0,NULL,1),
+(13,'Hujan Tanpa Pelangi',2021,'Bentang Pustaka','Ki Anom',2,100,'./uploads/buku/1636958908.jpg',0),
+(14,'Pemulihan Jiwa',2014,'Gramedia','Dedy Susanto',1,10,'./uploads/buku/1636959237.jpg',0),
+(15,'Kungfu Boy',2020,'Kanisius','Lala',3,10,'./uploads/buku/1636959614.jpg',0),
+(16,'Pemulihan Jiwa 2',2015,'Gramedia','Dedy Susanto',1,10,'./uploads/buku/1636959846.jpg',0);
 
 /*Table structure for table `tbl_bulan` */
 
