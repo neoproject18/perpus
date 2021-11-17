@@ -77,6 +77,7 @@
     <script>
       function ajax_login(){
         var username = document.getElementById("username").value;
+         var username = $('#username').val();
         var password = document.getElementById("password").value;
 
         if(username.length > 0 && password.length > 0) {
@@ -95,6 +96,9 @@
                 setTimeout("window.open(self.location, '_self');", 1500);
             },
           });
+        }
+        else{
+          // alert....
         }
       }
     </script>

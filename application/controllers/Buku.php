@@ -35,8 +35,37 @@ class Buku extends MY_Controller
 		$in_data['penulis'] = $this->db->escape_str($this->input->post('penulis'));
 		$in_data['id_kategori'] = $this->db->escape_str($this->input->post('id_kategori'));
 		$in_data['jumlah'] = $this->db->escape_str($this->input->post('jumlah'));
-		
-		if($this->m_buku->insert($in_data))
+
+		// lokasi direktori yang digunakan untuk menyimpan file
+		$path = "uploads/buku/";
+
+		// Jika di dalam project belum ada folder uploads/buku maka secara otomatis akan dicreate foldernya.
+		if (!is_dir($path)) {
+			mkdir($path, 0777, TRUE);
+		}
+
+		if(!empty($_FILES['gambar']['name']))
+		{
+			$config['upload_path'] = "./" . $path; // lokasi direktori file gambar akan disimpan
+			$config['allowed_types'] = 'gif|jpg|png|jpeg'; // jenis file gambar yang diijinkan untuk diupload
+			$config['file_name'] = time(); // rename nama file yang disimpan
+			$config['max_size'] = 1024; // ukuran maksimum file yang diijinkan
+			$this->upload->initialize($config);
+
+			if($this->upload->do_upload("gambar"))
+			{
+				// Mendapat file yang berhasil diupload
+				$uploadData = $this->upload->data();
+				// if($_FILES['file']['size'] > 1000)
+				// {
+				// 	$this->createThumbnail($path, $img);
+				// }
+
+				$in_data['gambar'] = "./" . $path . $uploadData['file_name'];
+			}
+		}
+
+		if($this->m_buku->insert($in_data)) 
 		{
 			$output['status_code'] = 200;
 			$output['title'] = "Berhasil";
@@ -71,6 +100,34 @@ class Buku extends MY_Controller
 		$in_data['penulis'] = $this->db->escape_str($this->input->post('penulis'));
 		$in_data['id_kategori'] = $this->db->escape_str($this->input->post('id_kategori'));
 		$in_data['jumlah'] = $this->db->escape_str($this->input->post('jumlah'));
+
+		// lokasi direktori yang digunakan untuk menyimpan file
+		$path = "uploads/buku/";
+
+		// Jika di dalam project belum ada folder uploads/buku maka secara otomatis akan dicreate foldernya.
+		if (!is_dir($path)) {
+			mkdir($path, 0777, TRUE);
+		}
+
+		if(!empty($_FILES['gambar']['name']))
+		{
+			$dataBuku = $this->m_buku->listbuku_byid($idbuku);
+			// digunakan untuk menghapus file yang sebelumnya pernah diupload
+			@unlink("./" . $dataBuku->gambar);
+
+			$config['upload_path'] = "./" . $path; // lokasi direktori file gambar akan disimpan
+			$config['allowed_types'] = 'gif|jpg|png|jpeg'; // jenis file gambar yang diijinkan untuk diupload
+			$config['file_name'] = time(); // rename nama file yang disimpan
+			$config['max_size'] = 1024; // ukuran maksimum file yang diijinkan
+			$this->upload->initialize($config);
+
+			if($this->upload->do_upload("gambar"))
+			{
+				// Mendapat file yang berhasil diupload
+				$uploadData = $this->upload->data();
+				$in_data['gambar'] = "./" . $path . $uploadData['file_name'];
+			}
+		}
 		
 		if($this->m_buku->update($in_data, $id_data))
 		{
@@ -97,6 +154,10 @@ class Buku extends MY_Controller
 
 		if($this->m_buku->update($in_data, $id_data))
 		{
+			$dataBuku = $this->m_buku->listbuku_byid($idbuku);
+			// digunakan untuk menghapus file yang sebelumnya pernah diupload
+			@unlink("./" . $dataBuku->gambar);
+			
 			$output['status_code'] = 200;
 			$output['title'] = "Berhasil";
 			$output['type'] = "success";
