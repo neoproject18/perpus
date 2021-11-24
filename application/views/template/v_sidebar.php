@@ -31,6 +31,12 @@
       <span>Data Member</span>
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('galeri') ?>">
+      <i class="fas fa-fw fa-image"></i>
+      <span>Data Galeri</span>
+    </a>
+  </li>
   <?php if($userlogin[0]->id_role == 1): ?>
     <li class="nav-item">
       <a class="nav-link" href="<?= base_url('user') ?>">

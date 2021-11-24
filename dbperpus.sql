@@ -1,6 +1,6 @@
 /*
-SQLyog Professional v12.5.1 (64 bit)
-MySQL - 10.4.11-MariaDB : Database - dbperpus
+SQLyog Professional v12.5.1 (32 bit)
+MySQL - 10.1.34-MariaDB : Database - dbperpus
 *********************************************************************
 */
 
@@ -29,7 +29,7 @@ CREATE TABLE `tbl_buku` (
   `id_kategori` int(3) NOT NULL,
   `jumlah` int(3) NOT NULL,
   `gambar` varchar(255) DEFAULT NULL,
-  `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
+  `isdeleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_buku`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
@@ -44,8 +44,8 @@ insert  into `tbl_buku`(`id_buku`,`judul_buku`,`tahun_terbit`,`penerbit`,`penuli
 (6,'Ayah',2015,'Bentang Pustaka','Andrea Hirata',2,0,NULL,1),
 (7,'Habis Gelap Terbitlah Terang',1997,'Gramedia','Anom',1,5,'./uploads/buku/1636962185.jpg',1),
 (8,'Peraih Mimpi',2000,'Bentang Pustaka','Tere Liye',2,0,NULL,1),
-(9,'Ayat Cinta',2000,'Gramedia','Arman',2,1,NULL,0),
-(10,'Buku Matematika',2020,'Erlangga','Arya',1,2,NULL,0),
+(9,'Ayat Cinta',2000,'Gramedia','Arman',2,1,'./uploads/buku/1637638901.jpg',0),
+(10,'Buku Matematika',2020,'Erlangga','Arya',1,2,'./uploads/buku/1637638910.jpg',0),
 (12,'Hidup Sehat',2020,'Bentang Pustaka','Anom',1,0,NULL,1),
 (13,'Hujan Tanpa Pelangi',2021,'Bentang Pustaka','Ki Anom',2,100,'./uploads/buku/1636958908.jpg',0),
 (14,'Pemulihan Jiwa',2014,'Gramedia','Dedy Susanto',1,10,'./uploads/buku/1636959237.jpg',0),
@@ -79,6 +79,21 @@ insert  into `tbl_bulan`(`id_bulan`,`bulan`,`inisial`) values
 (11,'November','Nov'),
 (12,'Desember','Des');
 
+/*Table structure for table `tbl_galeri` */
+
+DROP TABLE IF EXISTS `tbl_galeri`;
+
+CREATE TABLE `tbl_galeri` (
+  `id_galeri` int(11) NOT NULL AUTO_INCREMENT,
+  `filename` varchar(30) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `size` float DEFAULT NULL,
+  `path` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_galeri`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tbl_galeri` */
+
 /*Table structure for table `tbl_kategori` */
 
 DROP TABLE IF EXISTS `tbl_kategori`;
@@ -86,7 +101,7 @@ DROP TABLE IF EXISTS `tbl_kategori`;
 CREATE TABLE `tbl_kategori` (
   `id_kategori` int(3) NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(30) NOT NULL,
-  `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
+  `isdeleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_kategori`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -107,7 +122,7 @@ CREATE TABLE `tbl_member` (
   `alamat` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `no_telp` varchar(15) NOT NULL,
-  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_member`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -166,7 +181,7 @@ CREATE TABLE `tbl_user` (
   `username` varchar(30) NOT NULL,
   `id_role` int(3) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `isdeleted` tinyint(1) NOT NULL DEFAULT 0,
+  `isdeleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
