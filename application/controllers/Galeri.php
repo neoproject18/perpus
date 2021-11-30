@@ -85,7 +85,7 @@ class Galeri extends MY_Controller
 		if($this->m_galeri->delete($id))
 		{
 			// digunakan untuk menghapus file yang sebelumnya pernah diupload
-			@unlink($dataGaleri->path);
+			@unlink($dataGaleri->path);   
 
 			$output['status_code'] = 200;
 			$output['title'] = "Berhasil";
