@@ -14,10 +14,12 @@ class Beranda extends MY_Controller
 
 	public function index()
 	{
-		$tahun = 2020;
+		$tahun = 2020; // tahun saat ini
 		$data['userlogin'] = $this->userlogin;
+
 		$data['list_laporan'] = $this->m_laporan->listlaporan($tahun);
 		$data['tahun'] = $tahun;
+
 		$this->template->load('template/v_layout','v_beranda', $data);
 	}
 }

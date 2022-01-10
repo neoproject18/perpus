@@ -1,9 +1,27 @@
 <?php 
-
 for($i=0; $i<12; $i++){
-	$bulan[$i] = medium_bulan($i+1);
+	$bulan[$i] = namabulan($i+1);
 	$lapMember[$i] = 0;
 	$lapPinjam[$i] = 0;
+}
+
+function namabulan($bln)
+{
+	switch ($bln)
+	{
+		case 1: return "Jan"; break;
+		case 2: return "Feb"; break;
+		case 3: return "Mar"; break;
+		case 4: return "Apr"; break;
+		case 5: return "Mei"; break;
+		case 6: return "Jun"; break;
+		case 7: return "Jul"; break;
+		case 8: return "Ags"; break;
+		case 9: return "Sep"; break;
+		case 10: return "Okt"; break;
+		case 11: return "Nov"; break;
+		case 12: return "Des"; break;
+	}
 }
 
 foreach($list_laporan as $i => $val){
@@ -105,15 +123,14 @@ foreach($list_laporan as $i => $val){
 	</div>
 
 	<div class="row">
-		<!-- Area Charts -->
 		<div class="col-lg-12">
-			<div class="card mb-4">
-				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-					<h6 class="m-0 font-weight-bold text-primary">Laporan Member dan Peminjaman Tahun <?= $tahun ?></h6>
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Laporan Member dan Peminjaman</h6>
 				</div>
 				<div class="card-body">
-					<div class="chart-area">
-						<canvas id="myAreaChart"></canvas>
+					<div class="chart-bar">
+						<canvas id="myBarChart"></canvas>
 					</div>
 				</div>
 			</div>
@@ -123,13 +140,12 @@ foreach($list_laporan as $i => $val){
 
 <script type="text/javascript">
 // Bar and Line Chart Example
-var ctx = document.getElementById("myAreaChart");
-var myLineChart = new Chart(ctx, {
+var ctx = document.getElementById("myBarChart");
+var myBarChart = new Chart(ctx, {
 	type: 'bar',
 	data: {
 		labels: <?= json_encode($bulan) ?>,
-		datasets: [
-		{
+		datasets: [{
 			label: "Jumlah Member",
 			backgroundColor: "#4e73df",
 			hoverBackgroundColor: "#2e59d9",
@@ -157,7 +173,7 @@ var myLineChart = new Chart(ctx, {
 		scales: {
 			xAxes: [{
 				time: {
-					unit: 'date'
+					unit: 'month'
 				},
 				gridLines: {
 					display: false,
@@ -165,7 +181,7 @@ var myLineChart = new Chart(ctx, {
 				},
 				ticks: {
 					maxTicksLimit: 7
-				}
+				},
 			}],
 			yAxes: [{
 				ticks: {
@@ -173,7 +189,7 @@ var myLineChart = new Chart(ctx, {
 					padding: 10,
 					// Include a dollar sign in the ticks
 					callback: function(value, index, values) {
-						return '$' + value;
+						return value;
 					}
 				},
 				gridLines: {
@@ -189,26 +205,24 @@ var myLineChart = new Chart(ctx, {
 			display: false
 		},
 		tooltips: {
-			backgroundColor: "rgb(255,255,255)",
-			bodyFontColor: "#858796",
 			titleMarginBottom: 10,
 			titleFontColor: '#6e707e',
 			titleFontSize: 14,
+			backgroundColor: "rgb(255,255,255)",
+			bodyFontColor: "#858796",
 			borderColor: '#dddfeb',
 			borderWidth: 1,
 			xPadding: 15,
 			yPadding: 15,
 			displayColors: false,
-			intersect: false,
-			mode: 'index',
 			caretPadding: 10,
 			callbacks: {
 				label: function(tooltipItem, chart) {
 					var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-					return datasetLabel + ': $' + tooltipItem.yLabel;
+					return datasetLabel + ': ' + tooltipItem.yLabel;
 				}
 			}
-		}
+		},
 	}
 });
 
